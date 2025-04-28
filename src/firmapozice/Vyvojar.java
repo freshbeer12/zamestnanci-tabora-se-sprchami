@@ -1,23 +1,39 @@
 package firmapozice;
 
-public class Vyvojar extends Zamestnanec{
+import java.util.Scanner;
+
+public class Vyvojar extends Zamestnanec {
 
     private int jazyky;
 
-    public Zamestnanec(String jmeno, String prijmeni, String pozice, int plat, int jazyky) {
-        this.jmeno = jmeno;
-        this.prijmeni = prijmeni;
-        this.pozice = pozice;
-        this.plat = plat;
+
+    public Vyvojar(String jmeno, String prijmeni, int plat, int jazyky) {
+        super(jmeno, prijmeni, plat);
         this.jazyky = jazyky;
     }
 
-    public void vypisInfo(){
-        System.out.println("Jméno: " + jmeno);
-        System.out.println("Příjmení: " + prijmeni);
-        System.out.println("Pozice: " + pozice);
-        System.out.println("Plat: " + plat);
+
+    public int getJazyky() {
+        return jazyky;
+    }
+
+    @Override
+    public void vypisInfo() {
+        super.vypisInfo();
         System.out.println("Jazyky: " + jazyky);
     }
 
+
+    public static Vyvojar ziskejInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Zadejte jméno vývojáře: ");
+        String jmeno = sc.nextLine();
+        System.out.print("Zadejte příjmení vývojáře: ");
+        String prijmeni = sc.nextLine();
+        System.out.print("Zadejte plat vývojáře: ");
+        int plat = sc.nextInt();
+        System.out.print("Zadejte počet jazyků, které vývojář ovládá: ");
+        int jazyky = sc.nextInt();
+        return new Vyvojar(jmeno, prijmeni, plat, jazyky);
+    }
 }

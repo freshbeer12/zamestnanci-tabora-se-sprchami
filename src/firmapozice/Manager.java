@@ -1,22 +1,39 @@
 package firmapozice;
 
+import java.util.Scanner;
+
 public class Manager extends Zamestnanec {
 
     private int otroci;
 
-    public Zamestnanec(String jmeno, String prijmeni, String pozice, int plat, int otroci) {
-        this.jmeno = jmeno;
-        this.prijmeni = prijmeni;
-        this.pozice = pozice;
-        this.plat = plat;
+
+    public Manager(String jmeno, String prijmeni, int plat, int otroci) {
+        super(jmeno, prijmeni, plat);
         this.otroci = otroci;
     }
 
-    public void vypisInfo(){
-        System.out.println("Jméno: " + jmeno);
-        System.out.println("Příjmení: " + prijmeni);
-        System.out.println("Pozice: " + pozice);
-        System.out.println("Plat: " + plat);
-        System.out.println("Počet řízených otroků je " + otroci);
+
+    public int getOtroci() {
+        return otroci;
+    }
+
+    @Override
+    public void vypisInfo() {
+        super.vypisInfo();
+        System.out.println("Počet řízených otroků: " + otroci);
+    }
+
+
+    public static Manager ziskejInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Zadejte jméno manažera: ");
+        String jmeno = sc.nextLine();
+        System.out.print("Zadejte příjmení manažera: ");
+        String prijmeni = sc.nextLine();
+        System.out.print("Zadejte plat manažera: ");
+        int plat = sc.nextInt();
+        System.out.print("Zadejte počet řízených otroků: ");
+        int otroci = sc.nextInt();
+        return new Manager(jmeno, prijmeni, plat, otroci);
     }
 }

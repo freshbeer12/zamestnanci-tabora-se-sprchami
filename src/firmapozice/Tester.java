@@ -1,25 +1,38 @@
 package firmapozice;
 
-public class Tester extends Zamestnanec{
+import java.util.Scanner;
+
+public class Tester extends Zamestnanec {
+
     private int nalezeneChyby;
 
-    public Zamestnanec(String jmeno, String prijmeni, String pozice, int plat, int nalezeneChyby) {
-        this.jmeno = jmeno;
-        this.prijmeni = prijmeni;
-        this.pozice = pozice;
-        this.plat = plat;
-        this.nalezeneChyby = 0;
+    public Tester(String jmeno, String prijmeni, int plat, int nalezeneChyby) {
+        super(jmeno, prijmeni, plat);
+        this.nalezeneChyby = nalezeneChyby;
     }
 
-    private void naselJsemNovouChybu(){
-        int chyba = nalezeneChyby + 1;
+
+    public int getNalezeneChyby() {
+        return nalezeneChyby;
     }
 
-    public void vypisInfo(){
-        System.out.println("Jméno: " + jmeno);
-        System.out.println("Příjmení: " + prijmeni);
-        System.out.println("Pozice: " + pozice);
-        System.out.println("Plat: " + plat);
+    @Override
+    public void vypisInfo() {
+        super.vypisInfo();
         System.out.println("Nalezene chyby: " + nalezeneChyby);
+    }
+
+
+    public static Tester ziskejInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Zadejte jméno testera: ");
+        String jmeno = sc.nextLine();
+        System.out.print("Zadejte příjmení testera: ");
+        String prijmeni = sc.nextLine();
+        System.out.print("Zadejte plat testera: ");
+        int plat = sc.nextInt();
+        System.out.print("Zadejte počet nalezených chyb: ");
+        int nalezeneChyby = sc.nextInt();
+        return new Tester(jmeno, prijmeni, plat, nalezeneChyby);
     }
 }
